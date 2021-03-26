@@ -3,7 +3,7 @@
 }
 
 .topMenu {
-    -fx-background-color: #A377EE;
+    -fx-background-color: #A1D6F9;
 }
 
 .MenuBox:hover {
@@ -12,64 +12,68 @@
 
 
 .ToolBarMain {
-    -fx-background-color: #8259CC;
-    -fx-effect: innershadow(gaussian, #55339B, 5, 0.2, 0, 2);
+    -fx-background-color: #57b5f4;
+    -fx-effect: innershadow(gaussian, #095a90, 5, 0.2, 0, 2);
+
 }
 
 .ToolBox Button {
-    -fx-background-color: #8259CC;
+    -fx-background-color: #57b5f4;
     -fx-border-width: 0;
 }
 
 .ToolBox Button:hover {
-    -fx-background-color: #613CAB;
+    -fx-background-color: #0f96f0;
     -fx-cursor: hand;
 }
 
 .ToolBox ToggleButton {
-    -fx-background-color: #8259CC;
-    -fx-text-fill: white;
+    -fx-background-color: #57b5f4;
+    -fx-text-fill: #141b1f;
     -fx-border-width: 0;
 }
 
 .ToolBox ToggleButton:hover {
-    -fx-background-color: #613CAB;
+    -fx-background-color: #0f96f0;
     -fx-cursor: hand;
 }
 
 .ToolBox ToggleButton:selected {
-    -fx-background-color: #613CAB;
+    -fx-background-color: #0f96f0;
+
 }
 
 .ToolBox ComboBox {
-    -fx-background-color: #6F46C0;
-    -fx-text-fill: white;
+    -fx-background-color: #3fabf3;
+    -fx-text-fill: #141b1f;
     -fx-border-width: 0;
 }
 
 .ToolBox ComboBox:hover {
-    -fx-background-color: #613CAB;
+    -fx-background-color: #0f96f0;
+
 }
 
 .descText {
-    -fx-background-color: #c3a3ff;
-    -fx-text-fill: black;
+    -fx-background-color: #4d99cb;
+    -fx-text-fill: #141b1f;
 }
 
 .descText .content {
-    -fx-background-color: #a582f5;
+    -fx-background-color: #4d99cb;
     -fx-effect: innershadow(gaussian, #3E217F, 5, 0.2, 0, 2);
+
 }
 
 .sidePane:children {
-    -fx-background-color: #5C3B9C;
+    -fx-background-color: #4d99cb;
     -fx-effect: innershadow(gaussian, #3E217F, 5, 0.2, -2, 2);
 
 }
 
 .sidePane:filled {
     -fx-background-color: #805BC0;
-    -fx-effect: innershadow(gaussian, #55339B, 5, 0.2, -2, 2);
+    -fx-effect: innershadow(gaussian, #095a90, 5, 0.2, -2, 2);
 }
 
 
