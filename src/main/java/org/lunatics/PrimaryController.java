@@ -355,7 +355,8 @@ public class PrimaryController {
 
     @FXML
     public void handleFontChange() {
-        itemDetailTextArea.setFont(Font.font(fontList.getSelectionModel().getSelectedItem()));
+        int fontSize = fontSizeList.getSelectionModel().getSelectedItem();
+        itemDetailTextArea.setFont(Font.font(fontList.getSelectionModel().getSelectedItem(), fontSize));
     }
 
     @FXML

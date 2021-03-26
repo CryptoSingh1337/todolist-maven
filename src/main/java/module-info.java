@@ -4,7 +4,6 @@ module org.lunatics {
     requires javafx.graphics;
     requires javafx.controls;
     requires java.datatransfer;
-    requires graphicx;
     requires java.desktop;
 
     opens org.lunatics to javafx.fxml;

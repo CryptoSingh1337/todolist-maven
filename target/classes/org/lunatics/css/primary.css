@@ -14,7 +14,6 @@
 .ToolBarMain {
     -fx-background-color: #8259CC;
     -fx-effect: innershadow(gaussian, #55339B, 5, 0.2, 0, 2);
-
 }
 
 .ToolBox Button {
@@ -40,7 +39,6 @@
 
 .ToolBox ToggleButton:selected {
     -fx-background-color: #613CAB;
-
 }
 
 .ToolBox ComboBox {
@@ -51,18 +49,16 @@
 
 .ToolBox ComboBox:hover {
     -fx-background-color: #613CAB;
-
 }
 
 .descText {
-    -fx-background-color: #5C3B9C;
-    -fx-text-fill: white;
+    -fx-background-color: #c3a3ff;
+    -fx-text-fill: black;
 }
 
 .descText .content {
-    -fx-background-color: #5C3B9C;
+    -fx-background-color: #a582f5;
     -fx-effect: innershadow(gaussian, #3E217F, 5, 0.2, 0, 2);
-
 }
 
 .sidePane:children {
