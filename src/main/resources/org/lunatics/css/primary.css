@@ -1,5 +1,6 @@
 .root {
     -fx-font-size: 14px;
+    -fx-text-fill: #000000;
 }
 
 .topMenu {
@@ -14,12 +15,10 @@
 .ToolBarMain {
     -fx-background-color: #57b5f4;
     -fx-effect: innershadow(gaussian, #095a90, 5, 0.2, 0, 2);
-
 }
 
 .ToolBox Button {
     -fx-background-color: #57b5f4;
-    -fx-border-width: 0;
 }
 
 .ToolBox Button:hover {
@@ -30,7 +29,6 @@
 .ToolBox ToggleButton {
     -fx-background-color: #57b5f4;
     -fx-text-fill: #141b1f;
-    -fx-border-width: 0;
 }
 
 .ToolBox ToggleButton:hover {
@@ -46,97 +44,30 @@
 .ToolBox ComboBox {
     -fx-background-color: #3fabf3;
     -fx-text-fill: #141b1f;
-    -fx-border-width: 0;
 }
 
 .ToolBox ComboBox:hover {
     -fx-background-color: #0f96f0;
-
 }
 
 .descText {
-    -fx-background-color: #4d99cb;
+    -fx-background-color: #ff0017;
     -fx-text-fill: #141b1f;
 }
 
 .descText .content {
     -fx-background-color: #4d99cb;
     -fx-effect: innershadow(gaussian, #3E217F, 5, 0.2, 0, 2);
-
 }
 
-.sidePane:children {
-    -fx-background-color: #4d99cb;
-    -fx-effect: innershadow(gaussian, #3E217F, 5, 0.2, -2, 2);
-
+.bold {
+    -fx-font-weight: bold;
 }
 
-.sidePane:filled {
-    -fx-background-color: #805BC0;
-    -fx-effect: innershadow(gaussian, #095a90, 5, 0.2, -2, 2);
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: #94ccff;
 }
 
-
-.listCellBefore {
-    -fx-background-color: #D73B5D;
-    -fx-cursor: hand;
-}
-
-.listCellBefore:hover {
-    -fx-background-color: #F04B6F;
-    -fx-cursor: hand;
-    -fx-border-width: 0 0 5 0;
-    -fx-border-color: #D73B5D;
-}
-
-.listCellBefore:selected {
-    -fx-background-color: #F04B6F;
-    -fx-cursor: hand;
-    -fx-border-width: 0 0 5 0;
-    -fx-border-color: #D73B5D;
-}
-
-
-.listCellToday {
-    -fx-background-color: #FCE956;
-    -fx-cursor: hand;
-}
-
-.listCellToday:hover {
-    -fx-background-color: #E6F859;
-    -fx-cursor: hand;
-    -fx-border-width: 0 0 5 0;
-    -fx-border-color: #FCE956;
-}
-
-.listCellToday:selected {
-    -fx-background-color: #E6F859;
-    -fx-cursor: hand;
-    -fx-border-width: 0 0 5 0;
-    -fx-border-color: #FCE956;
-}
-
-
-.listCellLate {
-    -fx-background-color: #3AC048;
-    -fx-cursor: hand;
-}
-
-.listCellLate:hover {
-    -fx-background-color: #4BF05C;
-    -fx-cursor: hand;
-    -fx-border-width: 0 0 5 0;
-    -fx-border-color: #3AC048;
-}
-
-.listCellLate:selected {
-    -fx-background-color: #4BF05C;
-    -fx-cursor: hand;
-    -fx-border-width: 0 0 5 0;
-    -fx-border-color: #3AC048;
-}
-
-.listCellNull {
-    -fx-background-color: #B8A2D6;
-    -fx-cursor: hand;
+.list-cell:filled:hover {
+    -fx-background-color: #4dabf5;
 }

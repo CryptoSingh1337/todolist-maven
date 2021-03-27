@@ -1,10 +1,13 @@
 package org.lunatics;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.paint.Color;
+import javafx.collections.ObservableList;
 import org.lunatics.datamodel.*;
 import org.lunatics.additem.AddItemController;
 import org.lunatics.edititem.EditItemController;
 import javafx.application.Platform;
-import javafx.beans.value.*;
 import javafx.collections.transformation.*;
 import javafx.fxml.*;
 import javafx.scene.control.*;
@@ -65,6 +68,7 @@ public class PrimaryController {
     private FilteredList<TodoItem> filteredList;
     private Predicate<TodoItem> wantAllItems;
     private Predicate<TodoItem> wantTodayItems;
+    private StringBuilder s;
 
     public void initialize() {
 
@@ -74,6 +78,8 @@ public class PrimaryController {
         setupPredicates();
         setupFonts();
 
+        itemDetailTextArea.setStyle("-fx-background-color: #ACACAC");
+
         filteredList = new FilteredList<>(TodoData.getInstance().getTodoItems(), wantAllItems);
 
         // Sorting TodoItems based on Deadline
@@ -82,6 +88,7 @@ public class PrimaryController {
         todoListView.setItems(sortedList);
         todoListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         todoListView.getSelectionModel().selectFirst();
+        
 
         // Defining each cell of the List View
         todoListView.setCellFactory(new Callback<>() {
@@ -93,16 +100,16 @@ public class PrimaryController {
                         super.updateItem(item, empty);
                         if (empty) {
                             this.setText(null);
-                            this.getStyleClass().add("nullListCell");
                         } else {
                             this.setText(item.getShortDescription());
                             if (item.getDeadline().isBefore(LocalDate.now().plusDays(1))) {
-                                this.getStyleClass().add("listCellBefore");
+                                this.setTextFill(Color.RED);
                             } else if (item.getDeadline().equals(LocalDate.now().plusDays(1))) {
-                                this.getStyleClass().add("listCellToday");
+                                this.setTextFill(Color.BROWN);
                             } else {
-                                this.getStyleClass().add("listCellLate");
+                                this.setTextFill(Color.BLACK);
                             }
+                            this.getStyleClass().add("bold");
                         }
                     }
                 };
@@ -110,8 +117,6 @@ public class PrimaryController {
                         (obs, wasEmpty, isNowEmpty) -> {
                             if (isNowEmpty) {
                                 cell.setContextMenu(null);
-                                cell.getStyleClass().removeAll();
-                                cell.getStyleClass().add("nullListCell");
                             } else {
                                 cell.setContextMenu(listContextMenu);
                             }
@@ -119,7 +124,10 @@ public class PrimaryController {
                 );
                 return cell;
             }
+
         });
+        fontSizeList.getSelectionModel().select(2);
+        s = new StringBuilder();
     }
 
     private void setupContextMenu() {
@@ -167,26 +175,18 @@ public class PrimaryController {
      * This method will setup full view of the TodoItem which is selected in the text area.
      */
     private void setupFullView() {
-        todoListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TodoItem>() {
-            @Override
-            public void changed(ObservableValue<? extends TodoItem> observable, TodoItem oldValue, TodoItem newValue) {
-                if (newValue != null) {
-                    TodoItem item = todoListView.getSelectionModel().getSelectedItem();
-                    itemDetailTextArea.setText(item.getDetails());
-                    DateTimeFormatter df = DateTimeFormatter.ofPattern("dd MMMM, yyyy");
-                    deadlineLabel.setText("Due: " + df.format(item.getDeadline()));
-                }
+        todoListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                TodoItem item = todoListView.getSelectionModel().getSelectedItem();
+                itemDetailTextArea.setText(item.getDetails());
+                DateTimeFormatter df = DateTimeFormatter.ofPattern("dd MMMM, yyyy");
+                deadlineLabel.setText("Due: " + df.format(item.getDeadline()));
             }
         });
     }
 
     private void setupPredicates() {
-        wantAllItems = new Predicate<TodoItem>() {
-            @Override
-            public boolean test(TodoItem todoItem) {
-                return true;
-            }
-        };
+        wantAllItems = todoItem -> true;
         wantTodayItems = item -> item.getDeadline().equals(LocalDate.now());
     }
 
@@ -200,19 +200,15 @@ public class PrimaryController {
 
         fontList.getItems().addAll(Font.getFontNames());
         fontList.getSelectionModel().select(0);
-        fontList.setCellFactory((ListView<String> listView) -> {
-            final ListCell<String> cell = new ListCell<String>() {
-                @Override
-                public void updateItem(String item, boolean empty) {
-                    super.updateItem(item, empty);
-                    if (item != null) {
-                        setText(item);
-                        setFont(new Font(item, fontSizeList.getSelectionModel().getSelectedItem()));
-                    }
+        fontList.setCellFactory((ListView<String> listView) -> new ListCell<String>() {
+            @Override
+            public void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item != null) {
+                    this.setText(item);
+                    this.setFont(new Font(item, 12));
                 }
-            };
-            //cell.setPrefWidth(120);
-            return cell;
+            }
         });
     }
 
@@ -355,12 +351,10 @@ public class PrimaryController {
 
     @FXML
     public void handleFontChange() {
-        int fontSize = fontSizeList.getSelectionModel().getSelectedItem();
-        itemDetailTextArea.setFont(Font.font(fontList.getSelectionModel().getSelectedItem(), fontSize));
-    }
-
-    @FXML
-    public void handleFontSizeChange() {
-        itemDetailTextArea.setStyle("-fx-font-size:" + fontSizeList.getValue() + ";");
+        s.setLength(0);
+        s.append("-fx-font-family: ").append("\"").append(fontList.getValue()).append("\";")
+                .append("-fx-font-size: ").append(fontSizeList.getValue()).append(";")
+                .append("-fx-background-color: ").append("#000000");
+        itemDetailTextArea.setStyle(s.toString());
     }
 }

@@ -83,13 +83,13 @@
                         </tooltip>
                     </ToggleButton>
                     <ComboBox fx:id="fontList" onAction="#handleFontChange" style="-fx-pref-height: 32px"/>
-                    <ComboBox fx:id="fontSizeList" onAction="#handleFontSizeChange" style="-fx-pref-height:32px"/>
+                    <ComboBox fx:id="fontSizeList" onAction="#handleFontChange" style="-fx-pref-height:32px"/>
                 </HBox>
             </ToolBar>
         </VBox>
     </top>
     <left>
-        <ListView fx:id="todoListView" onKeyPressed="#handleKeyPressed" styleClass="sidePane"/>
+        <ListView fx:id="todoListView" onKeyPressed="#handleKeyPressed"/>
     </left>
     <center>
         <VBox>

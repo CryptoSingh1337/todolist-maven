@@ -16,7 +16,4 @@
             <DatePicker fx:id="deadlinePicker" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
         </GridPane>
     </content>
-    <stylesheets>
-        <URL value="@css/addPane.css"/>
-    </stylesheets>
 </DialogPane>

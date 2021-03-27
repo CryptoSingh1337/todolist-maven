@@ -1,13 +1,11 @@
+org\lunatics\PrimaryController$1.class
 org\lunatics\PrimaryController$1$1.class
 org\lunatics\additem\AddItemController.class
+org\lunatics\datamodel\TodoData.class
 org\lunatics\App.class
 org\lunatics\PrimaryController$2.class
+org\lunatics\PrimaryController.class
 org\lunatics\datamodel\TodoItem.class
 module-info.class
 org\lunatics\Main.class
-org\lunatics\PrimaryController$1.class
-org\lunatics\datamodel\TodoData.class
-org\lunatics\PrimaryController$3.class
-org\lunatics\PrimaryController$4.class
-org\lunatics\PrimaryController.class
 org\lunatics\edititem\EditItemController.class
